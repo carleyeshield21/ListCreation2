@@ -11,8 +11,7 @@ while True:
                     text_file = open('file.txt','r')
                     listahan = text_file.readlines()
                     listahan.append(item.capitalize())
-                    text_file = open('file.txt',
-                                     'w')
+                    text_file = open('file.txt','w')
                     text_file.writelines(listahan)
                 case 'x':
                     text_file = open('file.txt','r')
@@ -65,6 +64,10 @@ while True:
                         user_action = input("Type 'a' to add item to list\n's' to view your list\n'e' to edit your list\n'x' to "
                                             "exit and view your list\n'r' to remove item from the list\n").strip().lower()
     except FileNotFoundError:
-        print('Wala ka pang file pisti ka')
-        with open('file.txt','w') as text_file:
-            print('Gawa muna tayo')
+        user_choice = input('A file does not exist yet. Do you want to create one? Type "y" to create a text file. Or any key to exit\n')
+        if user_choice == 'y':
+            print('A new text file has been created')
+            with open('file.txt','w') as text_file:
+                print('The text file has been saved')
+        else:
+            exit()
